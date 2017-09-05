@@ -1,0 +1,131 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var x=0;
+var heman=0;
+var zombie=0;
+$(document).ready(function(){
+$count=0;
+$("#front").click(function(){
+$("#image").show(0);
+$("#front").hide(0).delay(400).show(0);
+$("#image").delay(400).hide(0);
+rollthedice();
+
+
+if($count%2==0){
+heman+=x;
+$("#heman1").show(0).animate({'marginLeft':"+="+x*100+"px"},x*1000).delay(x*100).hide(0);
+$("#heman").hide(0).animate({'marginLeft':"+="+x*100+"px"},x*1000).delay(x*100).show(0);
+}else{
+zombie+=x;
+$("#zm").show(0).animate({'marginLeft':"+="+x*100+"px"},x*1000).delay(x*100).hide(0);
+$("#zm1").hide(0).animate({'marginLeft':"+="+x*100+"px"},x*1000).delay(x*100).show(0);
+}
+if(zombie>=heman&&zombie!=0&&heman!=0){
+alert("You are dead");
+}else if(heman>10){
+alert("You are win");
+}
+$count=$count+1;
+});
+});
+function rollthedice(){
+
+x=Math.floor(Math.random()*7);
+if(x==0){
+x=1;
+}
+switch(x){
+case 1:
+document.getElementById("front").style.fontSize="2em";
+document.getElementById("front").innerHTML="&nbsp&nbsp&nbsp&nbsp"+"&#9679";
+break;
+case 2:
+document.getElementById("front").style.fontSize="2em";
+document.getElementById("front").innerHTML="&#9679"+"<br>"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679";
+break;
+case 3:
+document.getElementById("front").style.fontSize="1.55em";
+document.getElementById("front").innerHTML="&#9679"+"<br>"+"&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679"+"<br>"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679";
+break;
+case 4:
+document.getElementById("front").style.fontSize="2em";
+document.getElementById("front").innerHTML="&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp"+"&#9679"+"<br>"+"&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp"+"&#9679";
+
+break;
+case 5:
+document.getElementById("front").style.fontSize="1.5em";
+document.getElementById("front").innerHTML="&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679"+"<br>"+"&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679"+"<br>"+"&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679";
+break;
+case 6:
+document.getElementById("front").style.fontSize="1.5em";
+document.getElementById("front").innerHTML="&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679"+"<br>"+"&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679"+"<br>"+"&nbsp"+"&#9679"+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"&#9679";
+break;
+}
+
+}
+</script>
+<style>
+#front{
+background-color:#d9d9d9;
+border-radius:10px;
+width:80px;
+height:80px;
+margin-left:15px;
+margin-top:18px;
+position:absolute;
+border:1px solid grey;
+box-shadow:5px 5px 5px #b3b3b3;
+}
+#image{
+width:120px;
+height:120px;
+display:none;
+position:absolute;
+}
+#zm{
+position:absolute;
+margin-top:200px;
+width:150px;
+height:200px;
+background-image:url('zombie.gif');
+background-size:150px 200px;
+display:none;
+}
+#zm1{
+height:200px;
+width:150px;
+background-image:url('zm.png');
+background-size:150px 200px;
+margin-top:200px;
+position:absolute;
+}
+#heman{
+background-image:url('hemanstanding.png');
+height:200px;
+width:150px;
+background-size:150px 200px;
+margin-left:200px;
+margin-top:210px;
+position:absolute;
+}
+#heman1{
+display:none;
+background-image:url('man.gif');
+height:200px;
+width:150px;
+background-size:150px 200px;
+margin-left:200px;
+margin-top:210px;
+position:absolute;
+}
+</style>
+<body>
+<div style="margin-left:500px;margin-top:100px;">
+<img id="image" src="dicerecent.gif">
+<div id="front"></div></div>
+<div id="zm" >
+</div><div id="zm1"></div><div id="heman"></div><div id="heman1"></div>
+</body>
+</html>
